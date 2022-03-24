@@ -1,0 +1,76 @@
+﻿
+<p><a class="btn btn-primary" href="/Veiculos/Adicionar">Adicionar &raquo;</a></p>
+
+<div class="card">
+    <div class="card-body">
+                <table id="example1" class="table table-bordered table-hover" aria-describedby="example1_info">
+                    <thead>
+                        <tr>
+                            <th>Marca / Fabricante</th>
+                            <th>Modelo</th>
+                            <th >Ano<br />Fabricaçâo</th>
+                            <th>Cor</th>
+                            <th>Combustível</th>
+                            <th>Automático</th>
+                            <th>Valor</th>
+                            <th>Ação</th>
+                            <th>Ação</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        @foreach (var item in ViewBag.Lista)
+                        {
+                            <tr>
+                                <td>@item.Nome</td>
+                                <td>@item.Modelo</td>
+                                <td>@item.Fabricacao</td>
+                                <td>@item.Cor</td>
+                                <td>@item.Combustivel</td>
+                                <td>@item.Automatico</td>
+                                <td>@item.Valor</td>
+                                <td><a href="/Veiculos/Alterar/@item.Id">Alterar</a></td>
+                                <td><a href="/Veiculos/Excluir/@item.Id">Excluir</a></td>
+
+                            </tr>
+                        }
+                    </tbody>
+                    <tfoot>
+                        <tr>
+                            <th>Marca / Fabricante</th>
+                            <th>Modelo</th>
+                            <th>Ano<br />Fabricaçâo</th>
+                            <th>Cor</th>
+                            <th>Combustível</th>
+                            <th>Automático</th>
+                            <th>Valor</th>
+                            <th>Ação</th>
+                            <th>Ação</th>
+                        </tr>
+                    </tfoot>
+                </table>
+
+           
+           
+        
+    </div>
+    <!-- /.card-body -->
+</div>
+
+
+@section scripts {
+    <script>
+        $(function () {
+            
+            $('#example1').DataTable({
+                "paging": true,
+                "lengthChange": true,
+                "searching": true,
+                "ordering": true,
+                "info": true,
+                "autoWidth": false,
+                "responsive": true,
+                "buttons": ["copy", "csv", "excel", "pdf", "print", "colvis"]
+            }).buttons().container().appendTo('#example1_wrapper .col-md-6:eq(0)');
+        });
+    </script>
+} 
